@@ -35,7 +35,7 @@ def saisen():
                 json.dump({'point': point}, f, ensure_ascii=False, indent=2)
         except Exception:
             pass
-        return redirect(url_for('saisen.saisen', jinja=jinja_id)) # POSTしても、jinjaのidは持たせておく
+        return redirect(url_for('choose.choose', jinja=jinja_id)) # POSTしても、jinjaのidは持たせておく
     
     # GETリクエスト時: 画面表示
     return render_template('saisen.html', jinja_id=jinja_id, point=point)
