@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>賽銭画面</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='base-style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <button onclick="window.history.back();">戻る</button>
+        <h1>賽銭を投げる</h1>
+        <div>
+            <p>神社ID: {{ jinja_id }}</p>
+            <p>現在のポイント: {{ point if point is defined else 0 }}</p>
+        </div>
+        <form method="post">
+            <button type="submit" id="saisen-btn">賽銭を投げる</button>
+        </form>
+        <div id="saisen-motion"></div>
+    </div>
+    <script>
+    // 賽銭投げモーションは未実装
+    document.getElementById('saisen-btn').onclick = function() {
+        document.getElementById('saisen-motion').innerText = '賽銭が投げられました！';
+    };
+    </script>
+</body>
+</html>
