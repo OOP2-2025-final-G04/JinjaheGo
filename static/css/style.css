@@ -1,0 +1,103 @@
+/* 全体の設定
+*/
+body {
+    text-align: center;         /* 文字を中央揃え */
+    font-family: "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif; /* 標準的なゴシック体 */
+    background-color: #f0f0f0;  /* 背景色：薄いグレー */
+    margin: 0;
+    padding: 20px;
+    position: relative;         /* 右上のタイトルを配置するために必要 */
+}
+
+/* 右上のタイトル「神社へGO」
+*/
+.app-title {
+    position: absolute; /* 画面の隅に固定する設定 */
+    top: 20px;          /* 上から20px */
+    right: 20px;        /* 右から20px */
+    
+    font-size: 28px;    /* 文字の大きさ */
+    font-weight: bold;  /* 太文字 */
+    color: #d60000;     /* 神社の鳥居のような赤色 */
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", serif; /* 明朝体で和風の雰囲気に */
+    text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff; /* 文字の周りに白フチをつけて読みやすく */
+    z-index: 100;       /* 地図より手前に表示 */
+}
+
+/* メインの見出し (h1) 
+*/
+h1 {
+    color: #333;
+    margin-top: 40px; /* 右上のタイトルと重ならないように少し下げる */
+    font-size: 24px;
+}
+
+/* 地図エリアの枠 (ここがピン配置の基準になります) 
+*/
+.map-container {
+    position: relative; /* 重要: これがないとピンが飛んでいきます */
+    display: inline-block;
+    width: 90%;         /* スマホでも見やすいように幅90% */
+    max-width: 600px;   /* PCで大きくなりすぎないように最大600px */
+    margin-top: 20px;
+}
+
+/* 地図画像 
+*/
+.map-image {
+    width: 100%;
+    height: auto;       /* 比率を保って縮小 */
+    display: block;
+}
+
+/* 赤いピンのデザイン 
+*/
+.pin {
+    position: absolute; /* 親要素(.map-container)に対する絶対配置 */
+    width: 20px;        /* ピンの幅 */
+    height: 20px;       /* ピンの高さ */
+    background-color: red;
+    border: 2px solid white;
+    border-radius: 50%; /* 丸くする */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* 影をつける */
+    cursor: pointer;    /* マウスカーソルを指の形に */
+    transition: transform 0.2s; /* アニメーションの設定 */
+    
+    /* ピンの中心を座標(top, left)に合わせる */
+    transform: translate(-50%, -50%);
+    
+    text-decoration: none; /* リンクの下線を消す */
+}
+
+/* ピンにマウスが乗ったときのアクション 
+*/
+.pin:hover {
+    transform: translate(-50%, -50%) scale(1.3); /* 1.3倍に拡大 */
+    background-color: #ff4444; /* 少し明るい赤に */
+    z-index: 10; /* 他のピンより手前に表示 */
+}
+
+/* ピンの上の文字 (出雲大社など) 
+*/
+.pin-text {
+    position: absolute;
+    top: -30px; /* ピンの少し上に表示 */
+    left: 50%;
+    transform: translateX(-50%); /* 左右中央揃え */
+    
+    background: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #333;
+    font-weight: bold;
+    white-space: nowrap; /* 勝手に改行させない */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    
+    display: none; /* 普段は隠しておく */
+}
+
+/* ピンにマウスが乗ったら文字を表示 */
+.pin:hover .pin-text {
+    display: block;
+}

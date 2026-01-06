@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>おみくじ結果</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ shrine_name }} に到着！</h1>
+        
+        <p>ここでおみくじを引きます。</p>
+        
+        <br>
+        <a href="/">地図に戻る</a>
+    </div>
+</body>
+</html>
