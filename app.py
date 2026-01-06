@@ -57,11 +57,5 @@ def shrine_omikuji(name):
     return render_template("result.html", shrine_name=display_name)
 
 
-@app.route("/choose")
-def choose():
-    points = 0  # 仮のポイント値
-    return render_template("choose.html", points=points)
-
-
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080, debug=True)
