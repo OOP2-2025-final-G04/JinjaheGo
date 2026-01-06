@@ -3,26 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>賽銭画面</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='base-style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/saisen-style.css') }}">
 </head>
 <body>
     <div class="container">
-        <button onclick="window.history.back();">戻る</button>
-        <h1>賽銭を投げる</h1>
-        <div>
-            <p>神社ID: {{ jinja_id }}</p>
-            <p>現在のポイント: {{ point if point is defined else 0 }}</p>
+        <div class="game-screen">
+            <div class="header-row">
+                <button class="back-btn" onclick="window.history.back();">戻る</button>
+                <div class="point-display">ポイント: {{ point if point is defined else 0 }}</div>
+            </div>
+            
+            <h2 class="page-title">お賽銭を投げよう！</h2>
+            
+            <div class="saisenbako-area">
+                <img class="saisenbako" src="{{ url_for('static', filename='img/saisenbako.png') }}" alt="賽銭箱">
+            </div>
+            
+            <div class="goen-area">
+                <img class="goen" src="{{ url_for('static', filename='img/money_50.png') }}" alt="五円玉" data-jinja="{{ jinja_id }}">
+            </div>
+            
+            <div class="point-result">
+                奉納しました！
+            </div>
         </div>
-        <form method="post">
-            <button type="submit" id="saisen-btn">賽銭を投げる</button>
-        </form>
-        <div id="saisen-motion"></div>
     </div>
-    <script>
-    // 賽銭投げモーションは未実装
-    document.getElementById('saisen-btn').onclick = function() {
-        document.getElementById('saisen-motion').innerText = '賽銭が投げられました！';
-    };
-    </script>
+
+    <script src="{{ url_for('static', filename='scripts/saisen_motion.js') }}"></script>
 </body>
 </html>
