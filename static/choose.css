@@ -1,0 +1,70 @@
+/* 共通設定 */
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.shrine {
+    height: 100vh;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.points {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255,255,255,0.85);
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+
+/* 右上 戻るボタン */
+.back-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: black;
+}
+
+/* 下中央 操作ボタン */
+.action-buttons {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 16px;
+}
+
+button {
+    padding: 14px 20px;
+    font-size: 16px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+}
+
+.red-button {
+    background-color: red;
+    color: white;
+}
+
+.blue-button {
+    background-color: blue;
+    color: white;
+}
+
+.disabled {
+    background-color: gray;
+    color: white;
+    opacity: 0.5;
+    cursor: not-allowed;
+}

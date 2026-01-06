@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>神社</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='choose.css') }}">
+</head>
+<body>
+    <div class="shrine" style="background-image: url('https://example.com/shrine-background.jpg');">
+        <div class="points">ポイント: {{ points }}</div>
+        <a href="/back_to_map" class="back-btn">戻る</a>
+        <div class="action-buttons">
+            <form method="POST" action="/offer" style="display: inline;">
+                <button class="red-button">お賽銭を投げる</button>
+            </form>
+            <form method="POST" action="/omikuji" style="display: inline;">
+                <button class="{% if points >= 5 %}blue-button{% else %}disabled{% endif %}" {% if points < 5 %}disabled{% endif %}>御みくじを引く</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
