@@ -28,12 +28,6 @@ for bp in blueprints:
 def index():
     return render_template("index.html")
 
-    # ===== TODO: routes/omikuji.py =====
-    history = (
-        OmikujiHistory.select().order_by(OmikujiHistory.created_at.desc()).limit(10)
-    )
-    return render_template("omikuji.html", point=100, history=history)
-
 
 # 神社ごとの処理
 # 例: /shrine/ise にアクセスが来たらここが動く
