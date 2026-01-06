@@ -1,0 +1,167 @@
+body {
+    font-family: "Yu Mincho", serif;
+    background: #f7f3ea;
+    text-align: center;
+    padding: 40px;
+}
+
+h1 {
+    color: #c0392b;
+    margin-bottom: 10px;
+}
+
+#point-area {
+    margin: 15px;
+    font-size: 18px;
+}
+
+#draw-btn {
+    font-size: 18px;
+    padding: 12px 30px;
+    background: #d35400;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#draw-btn:hover {
+    background: #e67e22;
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+#history {
+    list-style: none;
+    padding: 0;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+#history li {
+    background: white;
+    margin: 5px;
+    padding: 6px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#box { font-size: 80px; cursor: pointer; }
+
+.shake { animation: shake 0.6s; }
+
+@keyframes shake {
+    0%{transform:rotate(0);}
+    25%{transform:rotate(10deg);}
+    50%{transform:rotate(-10deg);}
+    75%{transform:rotate(10deg);}
+    100%{transform:rotate(0);}
+}
+
+.hidden { display: none; }
+
+#paper {
+    margin: 20px auto;
+    padding: 15px;
+    width: 280px;
+    background: #fff8dc;
+    border: 2px solid #c0392b;
+}
+
+/* 左上：戻るボタン */
+#top-left {
+    position: fixed;
+    top: 15px;
+    left: 20px;
+}
+
+#back-btn {
+    padding: 6px 14px;
+    font-size: 14px;
+    background: #34495e;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#back-btn:hover {
+    background: #2c3e50;
+}
+
+/* 右上：お祈りポイント */
+#top-right {
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    font-size: 16px;
+}
+
+/* おみくじ箱 */
+#box {
+    margin: 20px auto;
+    width: 200px;
+    cursor: pointer;
+}
+
+#box-img {
+    width: 100%;
+    display: block;
+}
+
+/* 揺れアニメーションはそのまま使える */
+.shake {
+    animation: shake 0.6s;
+}
+
+/* おみくじの紙全体は左揃い */
+#paper {
+    text-align: left;
+}
+
+/* 運勢（大吉・中吉など）だけ中央揃い */
+#paper h2,
+#fortune {
+    text-align: center;
+}
+
+
+.history-item {
+    background: white;
+    width: 310px;
+    padding: 10px 14px;
+    border-radius: 8px;
+
+    position: relative;
+    left: 49%;
+    transform: translateX(-50%);
+
+    overflow: hidden;   /* 文字はみ出し防止 */
+    white-space: nowrap; /* 1行固定 */
+}
+
+
+.history-time {
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 4px;
+}
+
+.history-detail {
+    display: flex;
+    justify-content: space-between; /* 横一列に均等配置 */
+    align-items: center;
+
+    font-size: 12px;                /* 収まるサイズに */
+    color: #555;
+
+    white-space: nowrap;            /* ← 1行固定 */
+    overflow: hidden;               /* ← はみ出し禁止 */
+    text-overflow: ellipsis;        /* ← 万一の時は… */
+}
+
