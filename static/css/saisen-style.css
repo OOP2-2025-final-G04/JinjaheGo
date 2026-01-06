@@ -1,0 +1,78 @@
+/* 画面全体の枠 */
+.game-screen {
+    position: relative;
+    height: 600px;
+}
+
+/* ヘッダーの横並び配置 */
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 戻るボタン */
+.back-btn {
+    position: relative;
+    left: 0;
+}
+
+/* ポイント表示 */
+.point-display {
+    position: relative;
+    right: 0;
+    font-weight: bold;
+    color: #000000;
+}
+
+/* タイトル */
+.page-title {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* 賽銭箱の配置エリア */
+.saisenbako-area {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* 賽銭箱の画像 */
+.saisenbako {
+    width: 300px;
+    height: auto;
+    display: inline-block;
+}
+
+/* 五円玉の配置エリア */
+.goen-area {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+}
+
+/* 五円玉の画像 */
+.goen {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    touch-action: none; /* スマホ操作用 */
+}
+
+/* ポイント獲得時の結果表示 */
+.point-result {
+    display: none;
+    text-align: center;
+    font-size: 3em;
+    color: #d3381c;
+    font-weight: bold;
+    margin-top: 220px;
+    
+    position: absolute; 
+    top: 40%;
+    width: 100%;
+    z-index: 10;
+}

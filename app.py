@@ -4,6 +4,9 @@ import os
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from flask import Flask, render_template
+
+from models.models import initialize_database
+from routes import blueprints
 from models.models import db, User
 from models.omikuji import OmikujiHistory
 from routes.omikuji import omikuji_bp
@@ -17,6 +20,9 @@ db.create_tables([User, OmikujiHistory])
 # ★ Blueprint登録
 app.register_blueprint(omikuji_bp)
 
+# Blueprint登録
+for bp in blueprints:
+    app.register_blueprint(bp)
 
 @app.route("/")
 def index():
