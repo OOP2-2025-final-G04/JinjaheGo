@@ -9,7 +9,6 @@ from routes import blueprints
 from models.models import db, User
 from models.omikuji import OmikujiHistory
 from routes.omikuji import omikuji_bp
-from models.models import initialize_database
 from routes.choose import choose_bp
 
 app = Flask(__name__)
