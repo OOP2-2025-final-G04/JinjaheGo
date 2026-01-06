@@ -1,103 +1,160 @@
-/* 全体の設定
-*/
+/* 全体の設定（白銀の青海波） */
 body {
-    text-align: center;         /* 文字を中央揃え */
-    font-family: "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif; /* 標準的なゴシック体 */
-    background-color: #f0f0f0;  /* 背景色：薄いグレー */
-    margin: 0;
-    padding: 20px;
-    position: relative;         /* 右上のタイトルを配置するために必要 */
-}
-
-/* 右上のタイトル「神社へGO」
-*/
-.app-title {
-    position: absolute; /* 画面の隅に固定する設定 */
-    top: 20px;          /* 上から20px */
-    right: 20px;        /* 右から20px */
-    
-    font-size: 28px;    /* 文字の大きさ */
-    font-weight: bold;  /* 太文字 */
-    color: #d60000;     /* 神社の鳥居のような赤色 */
-    font-family: "Hiragino Mincho ProN", "Yu Mincho", serif; /* 明朝体で和風の雰囲気に */
-    text-shadow: 1px 1px 0 #fff, -1px -1px 0 #fff; /* 文字の周りに白フチをつけて読みやすく */
-    z-index: 100;       /* 地図より手前に表示 */
-}
-
-/* メインの見出し (h1) 
-*/
-h1 {
+    /* ベースの色 */
+    background-color: #ffffff;
     color: #333;
-    margin-top: 40px; /* 右上のタイトルと重ならないように少し下げる */
+    font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    
+    /* ▼▼▼ ここが波模様（青海波）を作る魔法のコード ▼▼▼ */
+    background-image: 
+        radial-gradient(circle at 100% 150%, #ffffff 24%, #f4f4f4 25%, #f4f4f4 28%, #ffffff 29%, #ffffff 36%, #f4f4f4 37%, #f4f4f4 40%, transparent 40%, transparent),
+        radial-gradient(circle at 0    150%, #ffffff 24%, #f4f4f4 25%, #f4f4f4 28%, #ffffff 29%, #ffffff 36%, #f4f4f4 37%, #f4f4f4 40%, transparent 40%, transparent),
+        radial-gradient(circle at 50%  100%, #ffffff 10%, #f4f4f4 11%, #f4f4f4 13%, #ffffff 14%, #ffffff 19%, #f4f4f4 20%, #f4f4f4 23%, transparent 23%, transparent),
+        radial-gradient(circle at 100% 50%, #ffffff 5%, #f4f4f4 6%, #f4f4f4 8%, #ffffff 9%, #ffffff 14%, #f4f4f4 15%, #f4f4f4 18%, transparent 18%, transparent),
+        radial-gradient(circle at 0    50%, #ffffff 5%, #f4f4f4 6%, #f4f4f4 8%, #ffffff 9%, #ffffff 14%, #f4f4f4 15%, #f4f4f4 18%, transparent 18%, transparent);
+    background-size: 64px 32px; /* 波の大きさ */
+    /* ▲▲▲ ここまで ▲▲▲ */
+
+    /* 画面中央に配置 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 右上のタイトル（縦書き・赤ライン） */
+.app-title {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    
     font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    color: #d60000;
+    
+    /* 少し線を太くして存在感を出す */
+    border-top: 2px solid #d60000;
+    border-bottom: 2px solid #d60000;
+    padding: 20px 0;
+    
+    /* 背景が波なので、文字が見やすいように白背景をうっすら入れる */
+    background-color: rgba(255,255,255,0.8);
+    box-shadow: 0 0 10px rgba(255,255,255,1);
+    
+    z-index: 100;
 }
 
-/* 地図エリアの枠 (ここがピン配置の基準になります) 
-*/
+/* メインの見出し */
+h1 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    /* 文字の背景にも少し白を入れる */
+    background-color: rgba(255,255,255,0.6);
+    padding: 5px 10px;
+}
+
+p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 30px;
+    background-color: rgba(255,255,255,0.6);
+}
+
+/* 地図エリア（白いカード風） */
 .map-container {
-    position: relative; /* 重要: これがないとピンが飛んでいきます */
+    position: relative;
     display: inline-block;
-    width: 90%;         /* スマホでも見やすいように幅90% */
-    max-width: 600px;   /* PCで大きくなりすぎないように最大600px */
-    margin-top: 20px;
+    width: 80%;
+    max-width: 550px;
+    
+    background-color: #ffffff;
+    padding: 40px;
+    
+    /* 影を少し強めにして、波模様から浮き上がらせる */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    border: 1px solid #eee; /* 薄い枠線 */
 }
 
-/* 地図画像 
-*/
+/* 地図画像 */
 .map-image {
     width: 100%;
-    height: auto;       /* 比率を保って縮小 */
+    height: auto;
     display: block;
+    opacity: 0.95;
 }
 
-/* 赤いピンのデザイン 
-*/
+/* ピンのデザイン（波紋アニメーション） */
 .pin {
-    position: absolute; /* 親要素(.map-container)に対する絶対配置 */
-    width: 20px;        /* ピンの幅 */
-    height: 20px;       /* ピンの高さ */
-    background-color: red;
-    border: 2px solid white;
-    border-radius: 50%; /* 丸くする */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* 影をつける */
-    cursor: pointer;    /* マウスカーソルを指の形に */
-    transition: transform 0.2s; /* アニメーションの設定 */
-    
-    /* ピンの中心を座標(top, left)に合わせる */
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: #d60000;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    cursor: pointer;
     transform: translate(-50%, -50%);
-    
-    text-decoration: none; /* リンクの下線を消す */
+    z-index: 50;
+    animation: pulse 2s infinite;
 }
 
-/* ピンにマウスが乗ったときのアクション 
-*/
+/* 波紋のアニメーション */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(214, 0, 0, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(214, 0, 0, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(214, 0, 0, 0);
+    }
+}
+
 .pin:hover {
-    transform: translate(-50%, -50%) scale(1.3); /* 1.3倍に拡大 */
-    background-color: #ff4444; /* 少し明るい赤に */
-    z-index: 10; /* 他のピンより手前に表示 */
+    background-color: #ff0000;
+    transform: translate(-50%, -50%) scale(1.2);
 }
 
-/* ピンの上の文字 (出雲大社など) 
-*/
+/* ピンの文字 */
 .pin-text {
     position: absolute;
-    top: -30px; /* ピンの少し上に表示 */
+    top: -40px;
     left: 50%;
-    transform: translateX(-50%); /* 左右中央揃え */
-    
-    background: white;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 12px;
-    color: #333;
-    font-weight: bold;
-    white-space: nowrap; /* 勝手に改行させない */
-    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-    
-    display: none; /* 普段は隠しておく */
+    transform: translateX(-50%);
+    background: #333;
+    color: #fff;
+    padding: 6px 12px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s;
 }
 
-/* ピンにマウスが乗ったら文字を表示 */
 .pin:hover .pin-text {
     display: block;
+    opacity: 1;
+}
+
+/* リンク */
+a {
+    color: #333;
+    text-decoration: none;
+    border-bottom: 1px solid #d60000;
+    padding-bottom: 2px;
+    transition: color 0.3s;
+}
+a:hover {
+    color: #d60000;
 }
