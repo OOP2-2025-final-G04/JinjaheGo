@@ -1,6 +1,13 @@
-from flask import Blueprint, redirect, url_for
+from flask import Blueprint, redirect, url_for, render_template, request
 
 choose_bp = Blueprint("choose", __name__)
+
+# 選択画面を表示
+@choose_bp.route("/choose")
+def choose():
+    jinja_id = request.args.get("jinja")
+    return render_template("choose.html", jinja_id=jinja_id, points=2)
+
 
 # 賽銭を投げる → 他メンバーの画面へ
 @choose_bp.route("/offer", methods=["POST"])

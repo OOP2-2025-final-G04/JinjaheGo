@@ -10,7 +10,9 @@
         <div class="points">ポイント: {{ points }}</div>
         <a href="/back_to_map" class="back-btn">戻る</a>
         <div class="action-buttons">
-            <form method="POST" action="/offer" style="display: inline;">
+            <form method="GET" action="{{ url_for('saisen.saisen') }}" style="display: inline;">
+                <!-- name="jinja" value="jinja_id" というデータを持っている -->
+                <input type="hidden" name="jinja" value="{{ jinja_id }}">
                 <button class="red-button">お賽銭を投げる</button>
             </form>
             <form method="POST" action="/omikuji" style="display: inline;">
