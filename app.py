@@ -9,6 +9,8 @@ from routes import blueprints
 from models.models import db, User
 from models.omikuji import OmikujiHistory
 from routes.omikuji import omikuji_bp
+from models.models import initialize_database
+from routes.choose import choose_bp
 
 app = Flask(__name__)
 
@@ -22,6 +24,8 @@ app.register_blueprint(omikuji_bp)
 # Blueprint登録
 for bp in blueprints:
     app.register_blueprint(bp)
+
+app.register_blueprint(choose_bp)
 
 
 @app.route("/")
@@ -52,6 +56,12 @@ def shrine_omikuji(name):
         display_name = "謎の神社"
 
     return render_template("result.html", shrine_name=display_name)
+
+
+@app.route("/choose")
+def choose():
+    points = 0  # 仮のポイント値
+    return render_template("choose.html", points=points)
 
 
 if __name__ == "__main__":
