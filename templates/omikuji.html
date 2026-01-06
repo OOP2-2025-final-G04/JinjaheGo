@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>おみくじ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='omikuji.css') }}">
+</head>
+<body>
+
+<h1>⛩ おみくじ</h1>
+
+<!-- 左上：戻るボタン -->
+<div id="top-left">
+    <button id="back-btn" onclick="history.back()">戻る</button>
+</div>
+
+<!-- 右上：お祈りポイント -->
+<div id="top-right">
+    お祈りポイント：<span id="point">{{ point }}</span>
+</div>
+
+
+<button id="draw-btn">おみくじを引く</button>
+
+<div id="result">まだ引いていません</div>
+
+<div id="box">
+    <img src="{{ url_for('static', filename='omikuji_box.png') }}"
+        alt="おみくじ箱"
+        id="box-img">
+</div>
+
+
+<div id="paper" class="hidden">
+<h2 id="fortune"></h2>
+<table>
+    <tr><td>願い事：</td><td id="wish"></td></tr>
+    <tr><td>失せ物：</td><td id="lost"></td></tr>
+    <tr><td>待ち人：</td><td id="wait"></td></tr>
+    <tr><td>健康：</td><td id="health"></td></tr>
+    <tr><td>学問：</td><td id="study"></td></tr>
+</table>
+</div>
+
+
+<h2>履歴（最新10件）</h2>
+<ul id="history">
+    {% for h in history %}
+        <li class="history-item">
+            <div class="history-time">
+                {{ h.created_at.strftime('%m/%d %H:%M') }}　{{ h.fortune }}
+            </div>
+            <div class="history-detail">
+                願い事：{{ h.wish }}
+                失せ物：{{ h.lost }}
+                待ち人：{{ h.wait }}
+                健康：{{ h.health }}
+                学問：{{ h.study }}
+            </div>
+        </li>
+    {% endfor %}
+</ul>
+
+
+<script src="{{ url_for('static', filename='omikuji.js') }}"></script>
+
+</body>
+</html>

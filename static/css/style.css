@@ -1,0 +1,160 @@
+/* 全体の設定（白銀の青海波） */
+body {
+    /* ベースの色 */
+    background-color: #ffffff;
+    color: #333;
+    font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    
+    /* ▼▼▼ ここが波模様（青海波）を作る魔法のコード ▼▼▼ */
+    background-image: 
+        radial-gradient(circle at 100% 150%, #ffffff 24%, #f4f4f4 25%, #f4f4f4 28%, #ffffff 29%, #ffffff 36%, #f4f4f4 37%, #f4f4f4 40%, transparent 40%, transparent),
+        radial-gradient(circle at 0    150%, #ffffff 24%, #f4f4f4 25%, #f4f4f4 28%, #ffffff 29%, #ffffff 36%, #f4f4f4 37%, #f4f4f4 40%, transparent 40%, transparent),
+        radial-gradient(circle at 50%  100%, #ffffff 10%, #f4f4f4 11%, #f4f4f4 13%, #ffffff 14%, #ffffff 19%, #f4f4f4 20%, #f4f4f4 23%, transparent 23%, transparent),
+        radial-gradient(circle at 100% 50%, #ffffff 5%, #f4f4f4 6%, #f4f4f4 8%, #ffffff 9%, #ffffff 14%, #f4f4f4 15%, #f4f4f4 18%, transparent 18%, transparent),
+        radial-gradient(circle at 0    50%, #ffffff 5%, #f4f4f4 6%, #f4f4f4 8%, #ffffff 9%, #ffffff 14%, #f4f4f4 15%, #f4f4f4 18%, transparent 18%, transparent);
+    background-size: 64px 32px; /* 波の大きさ */
+    /* ▲▲▲ ここまで ▲▲▲ */
+
+    /* 画面中央に配置 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 右上のタイトル（縦書き・赤ライン） */
+.app-title {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    color: #d60000;
+    
+    /* 少し線を太くして存在感を出す */
+    border-top: 2px solid #d60000;
+    border-bottom: 2px solid #d60000;
+    padding: 20px 0;
+    
+    /* 背景が波なので、文字が見やすいように白背景をうっすら入れる */
+    background-color: rgba(255,255,255,0.8);
+    box-shadow: 0 0 10px rgba(255,255,255,1);
+    
+    z-index: 100;
+}
+
+/* メインの見出し */
+h1 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    /* 文字の背景にも少し白を入れる */
+    background-color: rgba(255,255,255,0.6);
+    padding: 5px 10px;
+}
+
+p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 30px;
+    background-color: rgba(255,255,255,0.6);
+}
+
+/* 地図エリア（白いカード風） */
+.map-container {
+    position: relative;
+    display: inline-block;
+    width: 80%;
+    max-width: 550px;
+    
+    background-color: #ffffff;
+    padding: 40px;
+    
+    /* 影を少し強めにして、波模様から浮き上がらせる */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    border: 1px solid #eee; /* 薄い枠線 */
+}
+
+/* 地図画像 */
+.map-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0.95;
+}
+
+/* ピンのデザイン（波紋アニメーション） */
+.pin {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: #d60000;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+    z-index: 50;
+    animation: pulse 2s infinite;
+}
+
+/* 波紋のアニメーション */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(214, 0, 0, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(214, 0, 0, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(214, 0, 0, 0);
+    }
+}
+
+.pin:hover {
+    background-color: #ff0000;
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
+/* ピンの文字 */
+.pin-text {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: #fff;
+    padding: 6px 12px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.pin:hover .pin-text {
+    display: block;
+    opacity: 1;
+}
+
+/* リンク */
+a {
+    color: #333;
+    text-decoration: none;
+    border-bottom: 1px solid #d60000;
+    padding-bottom: 2px;
+    transition: color 0.3s;
+}
+a:hover {
+    color: #d60000;
+}
