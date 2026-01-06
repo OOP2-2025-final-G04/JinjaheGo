@@ -1,10 +1,34 @@
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 from flask import Flask, render_template
+from models.models import db, User
+from models.omikuji import OmikujiHistory
+from routes.omikuji import omikuji_bp
 
 app = Flask(__name__)
 
+# ★ DB初期化（OK）
+db.connect()
+db.create_tables([User, OmikujiHistory])
+
+# ★ Blueprint登録
+app.register_blueprint(omikuji_bp)
+
 @app.route("/")
 def index():
-    return render_template("index.html")
+    history = (
+        OmikujiHistory
+        .select()
+        .order_by(OmikujiHistory.created_at.desc())
+        .limit(10)
+    )
+    return render_template(
+        "omikuji.html",
+        point=100,
+        history=history
+    )
 
 # 神社ごとの処理
 # 例: /shrine/ise にアクセスが来たらここが動く
