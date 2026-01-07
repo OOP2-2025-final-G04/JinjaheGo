@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 from models.models import initialize_database
 from routes.choose import choose_bp
+import json
 
 app = Flask(__name__)
 
@@ -15,7 +16,9 @@ def index():
 
 @app.route("/choose")
 def choose():
-    points = 0  # 仮のポイント値
+    with open('static/point.json') as f:
+        data = json.load(f)
+        points = data['points']
     return render_template("choose.html", points=points)
 
 
