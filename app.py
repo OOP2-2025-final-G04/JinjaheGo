@@ -10,6 +10,7 @@ from models.models import db, User
 from models.omikuji import OmikujiHistory
 from routes.omikuji import omikuji_bp
 from routes.choose import choose_bp
+import json
 
 app = Flask(__name__)
 
@@ -49,6 +50,14 @@ def shrine_omikuji(name):
         display_name = "謎の神社"
 
     return render_template("result.html", shrine_name=display_name)
+
+
+@app.route("/choose")
+def choose():
+    with open("static/point.json") as f:
+        data = json.load(f)
+        points = data["points"]
+    return render_template("choose.html", points=points)
 
 
 if __name__ == "__main__":
