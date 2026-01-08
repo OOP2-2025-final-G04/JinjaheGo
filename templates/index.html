@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
     <meta charset="UTF-8">
     <title>日本地図おみくじ</title>
@@ -9,37 +8,31 @@
     <style>
         .point-display {
             position: absolute;
-            top: 15px;
-            /* 画面の一番上に配置 */
-            right: 20px;
-            /* 右端 */
-
-            color: #000000;
-            /* 黒文字 */
-            font-size: 16px;
-            /* 文字サイズ */
+            top: 15px;       /* 画面の一番上に配置 */
+            right: 20px;     /* 右端 */
+            
+            color: #000000;  /* 黒文字 */
+            font-size: 16px; /* 文字サイズ */
             font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
-
-            z-index: 9999;
-            /* 最前面に表示 */
+            
+            z-index: 9999;   /* 最前面に表示 */
         }
 
-        /* ロゴの位置調整（ポイント表示の下へずらす） */
         .app-title {
-            top: 60px !important;
-            /* 上からの距離を増やして下げる */
+            top: 80px !important;
             right: 30px !important;
+            
         }
     </style>
 </head>
-
 <body>
 
     <div class="app-title">神社へGO</div>
 
     <div class="point-display">
-        お祈りポイント：{{ points }}
+        お祈りポイント: {{ points }}
     </div>
+
     <div class="container">
         <h1>どこでおみくじを引く？</h1>
         <p>行きたい神社のピンをクリックしてね</p>
@@ -61,7 +54,8 @@
                     <span class="pin-text">伊勢神宮</span>
                 </a>
             </div>
+        </div>
+    </div>
 
 </body>
-
 </html>
