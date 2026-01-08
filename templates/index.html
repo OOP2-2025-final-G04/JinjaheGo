@@ -1,30 +1,38 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <title>日本地図おみくじ</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    
+
     <style>
         .point-display {
             position: absolute;
-            top: 15px;       /* 画面の一番上に配置 */
-            right: 20px;     /* 右端 */
-            
-            color: #000000;    /* 黒文字 */
-            font-size: 16px;   /* 文字サイズ */
+            top: 15px;
+            /* 画面の一番上に配置 */
+            right: 20px;
+            /* 右端 */
+
+            color: #000000;
+            /* 黒文字 */
+            font-size: 16px;
+            /* 文字サイズ */
             font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
-            
-            z-index: 9999;     /* 最前面に表示 */
+
+            z-index: 9999;
+            /* 最前面に表示 */
         }
 
         /* ロゴの位置調整（ポイント表示の下へずらす） */
         .app-title {
-            top: 60px !important; /* 上からの距離を増やして下げる */
+            top: 60px !important;
+            /* 上からの距離を増やして下げる */
             right: 30px !important;
         }
     </style>
-    </head>
+</head>
+
 <body>
 
     <div class="app-title">神社へGO</div>
@@ -38,8 +46,9 @@
 
         <div class="map-container">
             <div style="position: relative; width: 100%;">
-                <img src="{{ url_for('static', filename='images/japan_map.png') }}" alt="日本地図" class="map-image" style="width: 100%; display: block;">
-                
+                <img src="{{ url_for('static', filename='images/japan_map.png') }}" alt="日本地図" class="map-image"
+                    style="width: 100%; display: block;">
+
                 <a href="/shrine/izumo" class="pin" style="top: 70%; left: 28%;">
                     <span class="pin-text">出雲大社</span>
                 </a>
@@ -52,8 +61,22 @@
                     <span class="pin-text">伊勢神宮</span>
                 </a>
             </div>
+            <img src="{{ url_for('static', filename='images/japan_map.png') }}" alt="日本地図" class="map-image">
+
+            <a href="/choose?jinja=izumo" class="pin" style="top: 70%; left: 27%;">
+                <span class="pin-text">出雲大社</span>
+            </a>
+
+            <a href="/choose?jinja=nikko" class="pin" style="top: 58%; left: 61%;">
+                <span class="pin-text">日光東照宮</span>
+            </a>
+
+            <a href="/choose?jinja=ise" class="pin" style="top: 76%; left: 46%;">
+                <span class="pin-text">伊勢神宮</span>
+            </a>
         </div>
     </div>
 
 </body>
+
 </html>

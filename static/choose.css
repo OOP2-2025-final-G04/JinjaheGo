@@ -2,6 +2,15 @@
 body {
     margin: 0;
     font-family: sans-serif;
+    /* ▼▼▼ ここが波模様（青海波）を作る魔法のコード ▼▼▼ */
+    background-image: 
+        radial-gradient(circle at 100% 150%, #ffffff 24%, #f4f4f4 25%, #f4f4f4 28%, #ffffff 29%, #ffffff 36%, #f4f4f4 37%, #f4f4f4 40%, transparent 40%, transparent),
+        radial-gradient(circle at 0    150%, #ffffff 24%, #f4f4f4 25%, #f4f4f4 28%, #ffffff 29%, #ffffff 36%, #f4f4f4 37%, #f4f4f4 40%, transparent 40%, transparent),
+        radial-gradient(circle at 50%  100%, #ffffff 10%, #f4f4f4 11%, #f4f4f4 13%, #ffffff 14%, #ffffff 19%, #f4f4f4 20%, #f4f4f4 23%, transparent 23%, transparent),
+        radial-gradient(circle at 100% 50%, #ffffff 5%, #f4f4f4 6%, #f4f4f4 8%, #ffffff 9%, #ffffff 14%, #f4f4f4 15%, #f4f4f4 18%, transparent 18%, transparent),
+        radial-gradient(circle at 0    50%, #ffffff 5%, #f4f4f4 6%, #f4f4f4 8%, #ffffff 9%, #ffffff 14%, #f4f4f4 15%, #f4f4f4 18%, transparent 18%, transparent);
+    background-size: 64px 32px; /* 波の大きさ */
+    /* ▲▲▲ ここまで ▲▲▲ */
 }
 
 .shrine {
@@ -15,11 +24,10 @@ body {
 
 .points {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background: rgba(255,255,255,0.85);
-    padding: 8px 12px;
-    border-radius: 8px;
+    top: 15px;
+    right: 20px;
+    font-family: "MS Mincho", "MS PMincho", serif;
+    font-size: 16px;
 }
 
 /* 右上 戻るボタン */
@@ -27,11 +35,11 @@ body {
     position: absolute;
     top: 10px;
     left: 10px;
-    background: white;
+    background: black;
     padding: 8px 12px;
     border-radius: 8px;
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 /* 下中央 操作ボタン */
