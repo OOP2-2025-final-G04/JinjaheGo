@@ -44,4 +44,6 @@ def saisen():
             'redirect_url': url_for('choose.choose', jinja=jinja_id)
         })
     # GETリクエスト以外（POSTなど）も考慮してレンダリング
-    return render_template('saisen.html', jinja_id=jinja_id, point=point, get_point=0)
+    # 画像ファイル名をjinja_idから生成（例: img/ise.jpg）
+    bg_image = f"img/{jinja_id}.jpg" if jinja_id else "img/default.jpg"
+    return render_template('saisen.html', jinja_id=jinja_id, point=point, get_point=0, bg_image=bg_image)
