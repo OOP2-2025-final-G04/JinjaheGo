@@ -28,14 +28,12 @@
     color: #fff;
     border: none;
     font-size: 1em;
-    font-weight: bold;
 }
 
 /* ポイント表示 */
 .point-display {
     position: relative;
     right: 0;
-    font-weight: bold;
     color: #000000;
     top: 10px;
     right: 10px;
