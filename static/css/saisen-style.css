@@ -2,6 +2,7 @@
 .game-screen {
     position: relative;
     height: 600px;
+    /* width: 1000px; */
 }
 
 /* ヘッダーの横並び配置 */

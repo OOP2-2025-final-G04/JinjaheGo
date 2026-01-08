@@ -5,19 +5,50 @@
     <title>神社</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='choose.css') }}">
     <script src="{{ url_for('static', filename='scripts/choose.js') }}"></script>
+    <style>
+        .app-title {
+            position: absolute;
+            top: 80px;
+            right: 30px;
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            
+            font-family: "YuMincho", "MS PMincho", serif;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 5px;
+            color: #d60000;
+            
+            /* 少し線を太くして存在感を出す */
+            border-top: 2px solid #d60000;
+            border-bottom: 2px solid #d60000;
+            padding: 20px 0;
+            
+            /* 背景が波なので、文字が見やすいように白背景をうっすら入れる */
+            background-color: rgba(255,255,255,0.8);
+            box-shadow: 0 0 10px rgba(255,255,255,1);
+            
+            z-index: 100;
+        }
+    </style>
 </head>
 <body>
+    <div class="app-title">神社へGO</div>
     <div class="shrine" style="background-image: url('https://example.com/shrine-background.jpg');">
-        <div class="points">ポイント: {{ points }}</div>
-        <a href="/back_to_map" class="back-btn">戻る</a>
+        <div class="points">お祈りポイント: {{ points }}</div>
+        <a href="/" class="back-btn">戻る</a>
         <div class="action-buttons">
             <form method="GET" action="{{ url_for('saisen.saisen') }}" style="display: inline;">
                 <!-- name="jinja" value="jinja_id" というデータを持っている -->
                 <input type="hidden" name="jinja" value="{{ jinja_id }}">
                 <button class="red-button">お賽銭を投げる</button>
             </form>
-            <form method="POST" action="/omikuji" style="display: inline;">
-                <button class="{% if points >= 5 %}blue-button{% else %}disabled{% endif %}" {% if points < 5 %}disabled{% endif %}>御みくじを引く</button>
+            <form method="GET" action="{{ url_for('omikuji.omikuji_page') }}" style="display: inline;">
+                <input type="hidden" name="jinja" value="{{ jinja_id }}">
+                <button class="{% if points >= 5 %}blue-button{% else %}disabled{% endif %}"
+                        {% if points < 5 %}disabled{% endif %}>
+                    御みくじを引く
+                </button>
             </form>
         </div>
     </div>
