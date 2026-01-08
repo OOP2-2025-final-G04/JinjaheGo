@@ -89,6 +89,12 @@ h1 {
     border-radius: 8px;
     text-decoration: none;
     color: white;
+
+    font-family: "Hiragino Kaku Gothic ProN",
+                "Hiragino Sans",
+                "Yu Gothic",
+                "Meiryo",
+                sans-serif;
 }
 
 
