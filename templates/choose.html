@@ -16,8 +16,12 @@
                 <input type="hidden" name="jinja" value="{{ jinja_id }}">
                 <button class="red-button">お賽銭を投げる</button>
             </form>
-            <form method="POST" action="/omikuji" style="display: inline;">
-                <button class="{% if points >= 5 %}blue-button{% else %}disabled{% endif %}" {% if points < 5 %}disabled{% endif %}>御みくじを引く</button>
+            <form method="GET" action="{{ url_for('omikuji.omikuji_page') }}" style="display: inline;">
+                <input type="hidden" name="jinja" value="{{ jinja_id }}">
+                <button class="{% if points >= 5 %}blue-button{% else %}disabled{% endif %}"
+                        {% if points < 5 %}disabled{% endif %}>
+                    御みくじを引く
+                </button>
             </form>
         </div>
     </div>

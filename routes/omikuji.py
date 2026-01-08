@@ -1,6 +1,6 @@
 import json
 import os
-from flask import Blueprint, render_template, jsonify
+from flask import Blueprint, render_template, jsonify, request
 from models.omikuji import OmikujiHistory
 import random
 
@@ -79,6 +79,7 @@ def with_comment(category, mark):
 
 @omikuji_bp.route('/omikuji')
 def omikuji_page():
+    jinja_id = request.args.get("jinja")  # ★ 追加
     history = (
         OmikujiHistory
         .select()
@@ -91,7 +92,8 @@ def omikuji_page():
     return render_template(
         'omikuji.html',
         history=history,
-        point=current_point
+        point=current_point,
+        jinja_id=jinja_id  # ★ 追加
     )
 
 
