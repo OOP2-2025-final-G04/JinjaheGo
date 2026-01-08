@@ -9,7 +9,6 @@ body {
     padding: 0;
     min-height: 100vh;
     
-    /* ▼▼▼ ここが波模様（青海波）を作る魔法のコード ▼▼▼ */
     background-image: 
         radial-gradient(circle at 100% 150%, #ffffff 24%, #f4f4f4 25%, #f4f4f4 28%, #ffffff 29%, #ffffff 36%, #f4f4f4 37%, #f4f4f4 40%, transparent 40%, transparent),
         radial-gradient(circle at 0    150%, #ffffff 24%, #f4f4f4 25%, #f4f4f4 28%, #ffffff 29%, #ffffff 36%, #f4f4f4 37%, #f4f4f4 40%, transparent 40%, transparent),
@@ -17,7 +16,6 @@ body {
         radial-gradient(circle at 100% 50%, #ffffff 5%, #f4f4f4 6%, #f4f4f4 8%, #ffffff 9%, #ffffff 14%, #f4f4f4 15%, #f4f4f4 18%, transparent 18%, transparent),
         radial-gradient(circle at 0    50%, #ffffff 5%, #f4f4f4 6%, #f4f4f4 8%, #ffffff 9%, #ffffff 14%, #f4f4f4 15%, #f4f4f4 18%, transparent 18%, transparent);
     background-size: 64px 32px; /* 波の大きさ */
-    /* ▲▲▲ ここまで ▲▲▲ */
 
     /* 画面中央に配置 */
     display: flex;
