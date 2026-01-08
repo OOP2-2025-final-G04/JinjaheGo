@@ -85,7 +85,15 @@ def omikuji_page():
         .order_by(OmikujiHistory.created_at.desc())
         .limit(10)
     )
-    return render_template('omikuji.html', history=history, point=0)
+
+    current_point = load_point()  # ★ 追加
+
+    return render_template(
+        'omikuji.html',
+        history=history,
+        point=current_point
+    )
+
 
 # ===== おみくじ実行 =====
 
