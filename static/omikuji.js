@@ -28,6 +28,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const response = await fetch("/draw_omikuji", { method: "POST" });
         const data = await response.json();
 
+        // ポイント不足チェック
+        if (data.error) {
+            alert(data.error);
+            return;
+        }
+
         // 結果表示
         resultDiv.textContent = `結果：${data.fortune}`;
         fortune.textContent = data.fortune;
@@ -36,6 +42,9 @@ document.addEventListener("DOMContentLoaded", () => {
         wait.textContent = data.wait;
         health.textContent = data.health;
         study.textContent = data.study;
+
+        document.getElementById("point").textContent = data.point;
+
 
         // 履歴更新
         historyUl.innerHTML = "";

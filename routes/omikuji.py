@@ -1,8 +1,24 @@
+import json
+import os
 from flask import Blueprint, render_template, jsonify
 from models.omikuji import OmikujiHistory
 import random
 
 omikuji_bp = Blueprint('omikuji', __name__)
+
+POINT_FILE = "point.json"
+OMIKUJI_COST = 5
+
+
+def load_point():
+    with open(POINT_FILE, "r", encoding="utf-8") as f:
+        return json.load(f)["point"]
+
+
+def save_point(point):
+    with open(POINT_FILE, "w", encoding="utf-8") as f:
+        json.dump({"point": point}, f, ensure_ascii=False, indent=2)
+
 
 # ===== おみくじロジック =====
 
@@ -75,6 +91,20 @@ def omikuji_page():
 
 @omikuji_bp.route('/draw_omikuji', methods=['POST'])
 def draw_omikuji():
+    current_point = load_point()
+
+    # ポイント不足チェック
+    if current_point < OMIKUJI_COST:
+        return jsonify({
+            "error": "ポイントが足りません",
+            "point": current_point
+        })
+
+    # ポイント消費
+    current_point -= OMIKUJI_COST
+    save_point(current_point)
+
+    # ===== ここからおみくじ処理（今まで通り） =====
     wish = rand_mark()
     lost = rand_mark()
     wait = rand_mark()
@@ -84,7 +114,6 @@ def draw_omikuji():
     marks = [wish, lost, wait, health, study]
     fortune = calc_fortune(marks)
 
-    # DBには「記号のみ」を保存
     OmikujiHistory.create(
         fortune=fortune,
         wish=wish,
@@ -111,16 +140,15 @@ def draw_omikuji():
             'health': h.health,
             'study': h.study,
             'time': h.created_at.strftime('%m/%d %H:%M')
-
         })
 
-
     return jsonify({
-        'fortune': fortune,
-        'wish': with_comment("wish", wish),
-        'lost': with_comment("lost", lost),
-        'wait': with_comment("wait", wait),
-        'health': with_comment("health", health),
-        'study': with_comment("study", study),
-        'history': history_list
+        "fortune": fortune,
+        "wish": with_comment("wish", wish),
+        "lost": with_comment("lost", lost),
+        "wait": with_comment("wait", wait),
+        "health": with_comment("health", health),
+        "study": with_comment("study", study),
+        "history": history_list,
+        "point": current_point
     })
