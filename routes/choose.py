@@ -36,10 +36,3 @@ def go_offer_screen():
 @choose_bp.route("/omikuji", methods=["POST"])
 def go_omikuji_screen():
     return redirect(url_for("choose.go_omikuji_screen"))
-
-
-# 地図に戻る
-@choose_bp.route("/back_to_map")
-def back_to_map():
-    return redirect(url_for("map"))
-    # return redirect(url_for("choose.back_to_map"))
