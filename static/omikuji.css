@@ -80,15 +80,17 @@ h1 {
     left: 20px;
 }
 
-#back-btn {
-    padding: 6px 14px;
-    font-size: 14px;
-    background: #34495e;
+.back-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: black;
+    padding: 8px 12px;
+    border-radius: 8px;
+    text-decoration: none;
     color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
 }
+
 
 #back-btn:hover {
     background: #2c3e50;
@@ -170,4 +172,29 @@ h1 {
     top: 15px;
     left: 15px;
     font-size: 16px;
+}
+
+/* 右上のタイトル（縦書き・赤ライン） */
+.app-title {
+    position: absolute;
+    top: 80px;
+    right: 30px;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    color: #d60000;
+    
+    /* 少し線を太くして存在感を出す */
+    border-top: 2px solid #d60000;
+    border-bottom: 2px solid #d60000;
+    padding: 20px 0;
+    
+    /* 背景が波なので、文字が見やすいように白背景をうっすら入れる */
+    background-color: rgba(255,255,255,0.8);
+    box-shadow: 0 0 10px rgba(255,255,255,1);
+    
+    z-index: 100;
 }
