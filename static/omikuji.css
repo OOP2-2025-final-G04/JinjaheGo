@@ -11,7 +11,7 @@ h1 {
 }
 
 #point-area {
-    margin: 15px;
+    margin: 0px;
     font-size: 18px;
 }
 
@@ -104,7 +104,7 @@ h1 {
 
 /* 右上：お祈りポイント */
 #top-right {
-    position: fixed;
+    position: absolute;
     top: 15px;
     right: 20px;
     font-size: 16px;
