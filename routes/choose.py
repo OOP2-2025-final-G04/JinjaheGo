@@ -23,7 +23,9 @@ def choose():
         except Exception:
             point = 0
 
-    return render_template("choose.html", jinja_id=jinja_id, points=point)
+    # 画像ファイル名をjinja_idから生成（例: img/ise.jpg）
+    bg_image = f"img/{jinja_id}.jpg" if jinja_id else "img/default.jpg"
+    return render_template("choose.html", jinja_id=jinja_id, points=point, bg_image=bg_image)
 
 
 # 賽銭を投げる → 他メンバーの画面へ
