@@ -29,6 +29,7 @@ body {
     background: rgba(255,255,255,0.85);
     padding: 8px 12px;
     border-radius: 8px;
+    font-family: "MS Mincho", "MS PMincho", serif;
 }
 
 /* 右上 戻るボタン */
